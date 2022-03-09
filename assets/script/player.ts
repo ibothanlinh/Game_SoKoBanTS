@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import direction from "./direction";
+import direction_player from "./direction_player";
 
 const {ccclass, property} = cc._decorator;
 
@@ -37,22 +37,22 @@ export default class player extends cc.Component {
     }
 
     protected update(dt: number): void {
-        if (this.node.getChildByName('top').getComponent(direction).isTop_block){
+        if (this.node.getChildByName('top').getComponent(direction_player).isTop_block){
             this.ismove_top = false;
         }else{
             this.ismove_top = true;
         }
-        if (this.node.getChildByName('bottom').getComponent(direction).isBottom_block){
+        if (this.node.getChildByName('bottom').getComponent(direction_player).isBottom_block){
             this.ismove_bottom = false;
         }else{
             this.ismove_bottom = true;
         }
-        if (this.node.getChildByName('right').getComponent(direction).isRight_block){
+        if (this.node.getChildByName('right').getComponent(direction_player).isRight_block){
             this.ismove_right = false;
         }else{
             this.ismove_right = true;
         }
-        if (this.node.getChildByName('left').getComponent(direction).isLeft_block){
+        if (this.node.getChildByName('left').getComponent(direction_player).isLeft_block){
             this.ismove_left = false;
         }else{
             this.ismove_left = true;
