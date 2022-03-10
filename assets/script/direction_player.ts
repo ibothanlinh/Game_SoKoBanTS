@@ -10,10 +10,10 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class direction_player extends cc.Component {
-    @property({
-        type: cc.Node
-    })
-    player: cc.Node = null;
+    // @property({
+    //     type: cc.Node
+    // })
+    // player: cc.Node = null;
 
     // crate_mng: crate_mng = null;
     // stepMove = 64;
@@ -23,10 +23,14 @@ export default class direction_player extends cc.Component {
     isLeft_block = false;
     isRight_block = false;
 
-    isTop_crate = false;
-    isBottom_crate = false;
-    isLeft_crate = false;
-    isRight_crate = false;
+    isCrate = false;
+    nameCrate = '';
+    nameDir = '';
+    tag = undefined;
+    // isTop_crate = false;
+    // isBottom_crate = false;
+    // isLeft_crate = false;
+    // isRight_crate = false;
 
     // ArrMovableCrate = [];
     onCollisionEnter(other, self){
@@ -50,6 +54,15 @@ export default class direction_player extends cc.Component {
                 // cc.log('on left');
             }
         }
+        if (other.tag == 2){
+            this.nameCrate = other.node.name;
+            this.nameDir = self.node.name;
+            this.tag = 2;
+            cc.log(this.nameCrate);
+            cc.log(this.nameDir);
+
+        }
+        
         // if (other.tag == 2){
         //     // let posCrate = other.node.parent.getChildByName(other.node.name).position;
         //     // let posWorld = other.node.parent.convertToWorldSpaceAR(posCrate);
@@ -103,6 +116,11 @@ export default class direction_player extends cc.Component {
                 this.isLeft_block = false;
                 // cc.log('off left');
             }
+        }
+        if (other.tag == 2){ 
+            this.nameCrate = '';
+            this.tag = 2;
+            cc.log(this.nameCrate);
         }
         // if (other.node.tag == 2){
         //     this.ArrMovableCrate = null;
