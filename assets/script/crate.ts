@@ -28,26 +28,29 @@ export default class crate extends cc.Component {
     ismove_left = false;
     ismove_right = false;
 
-
-
     isAction = false;
 
+
+    protected start(): void {
+        this.node.color = cc.Color.WHITE;
+    }
+
     onCollisionEnter(other, self){
-        if (other.tag == 3){
-            // this.isAction = true;
-            if (other.node.name == 'bottom'){
-                this.isCol_bottom = true;
-            }
-            if (other.node.name == 'top'){
-                this.isCol_top = true;
-            }
-            if (other.node.name == 'left'){
-                this.isCol_left = true;
-            }
-            if (other.node.name == 'right'){
-                this.isCol_right = true;
-            }
-        }
+        // if (other.tag == 3){
+        //     // this.isAction = true;
+        //     if (other.node.name == 'bottom'){
+        //         this.isCol_bottom = true;
+        //     }
+        //     if (other.node.name == 'top'){
+        //         this.isCol_top = true;
+        //     }
+        //     if (other.node.name == 'left'){
+        //         this.isCol_left = true;
+        //     }
+        //     if (other.node.name == 'right'){
+        //         this.isCol_right = true;
+        //     }
+        // }
 
         if(other.node.name == 'player'){
             if(this.touch_move.accMove.x < 0){
@@ -60,26 +63,42 @@ export default class crate extends cc.Component {
                 this.node.y += this.stepMove;
             }
         }
+
+        if (other.tag == 4){
+            this.node.color = cc.Color.RED;
+            this.touch_move.crateCr++;
+        }
         // cc.log(other.tag);
         // cc.log(other.node.name);
         
     }
 
+    onCollisionStay(other, self){
+        if (other.tag == 4){
+            this.node.color = cc.Color.RED;
+        }
+    }
+
     onCollisionExit(other, self){
-        if (other.tag == 3){
-            // this.isAction = false;
-            if (other.node.name == 'bottom'){
-                this.isCol_bottom = false;
-            }
-            if (other.node.name == 'top'){
-                this.isCol_top = false;
-            }
-            if (other.node.name == 'left'){
-                this.isCol_left = false;
-            }
-            if (other.node.name == 'right'){
-                this.isCol_right = false;
-            }
+        // if (other.tag == 3){
+        //     // this.isAction = false;
+        //     if (other.node.name == 'bottom'){
+        //         this.isCol_bottom = false;
+        //     }
+        //     if (other.node.name == 'top'){
+        //         this.isCol_top = false;
+        //     }
+        //     if (other.node.name == 'left'){
+        //         this.isCol_left = false;
+        //     }
+        //     if (other.node.name == 'right'){
+        //         this.isCol_right = false;
+        //     }
+        // }
+
+        if (other.tag == 4){
+            this.node.color = cc.Color.WHITE;
+            this.touch_move.crateCr--;
         }
     }
 

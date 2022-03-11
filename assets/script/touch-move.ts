@@ -25,6 +25,14 @@ export default class touch_move extends cc.Component {
         type: cc.Node
     })
     crate_mng: cc.Node = null;
+    @property({
+        type: cc.Node
+    })
+    Score: cc.Node = null;
+    @property({
+        type: cc.Prefab
+    })
+    popup_win: cc.Prefab = null;
     // @property({
     //     type: crate
     // })
@@ -40,6 +48,9 @@ export default class touch_move extends cc.Component {
 
     isCrate = false;
     keyCrate = '';
+    crateLenght = 0;
+    crateMax = 0;
+    crateCr = 0;
 
     protected onLoad(): void {
         // this.node.getComponent(player).touch_move = this;
@@ -47,12 +58,8 @@ export default class touch_move extends cc.Component {
 
 
     protected start(): void {
-
-        // this.ismove_bottom = true;
-        // this.ismove_top = true;
-        // this.ismove_left = true;
-        // this.ismove_right = true;
-
+        this.crateLenght = this.crate_mng.children.length;
+        this.crateMax = this.crateLenght;
         this.node.on('touchmove', (move) =>{
             let delta = move.getDelta();
             this.accMove = delta;
@@ -138,6 +145,11 @@ export default class touch_move extends cc.Component {
     }
 
     update (dt) {
-        
+        this.Score.getChildByName("score_cr").getComponent(cc.Label).string = `${this.crateMax}/${this.crateCr}`;
+        if(this.crateMax == this.crateCr){
+            let popup = cc.instantiate(this.popup_win);
+            this.node.addChild(popup);
+        }
     }
+    
 }
