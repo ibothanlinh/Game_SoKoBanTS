@@ -41,9 +41,6 @@ export default class player extends cc.Component {
     protected onLoad(): void {
         cc.director.getCollisionManager().enabled = true;
     }
-    onCollisionEnter(other, self){
-       
-    }
 
     protected update(dt: number): void {
         if (this.top.getComponent(direction_player).isTop_block){
@@ -65,10 +62,7 @@ export default class player extends cc.Component {
             this.ismove_left = false;
         }else{
             this.ismove_left = true;
-        }
-
-        
-        
+        }        
     }
 }
 

@@ -38,9 +38,6 @@ export default class direction_crate extends cc.Component {
     }
 
     onCollisionExit(other, self){
-        // cc.log('exit');
-        // cc.log(other.node.name);
-        // cc.log(self.node.name);
         if (other.node.name == 'block' || other.tag == 2){
             if (self.node.name == 'top'){
                 this.isTop_block = false;
@@ -59,8 +56,5 @@ export default class direction_crate extends cc.Component {
                 // cc.log('off left');
             }
         }
-        // if (other.node.tag == 2){
-        //     this.ArrMovableCrate = null;
-        // }
     }
 }

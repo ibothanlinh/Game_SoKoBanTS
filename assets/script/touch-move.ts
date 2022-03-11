@@ -33,18 +33,9 @@ export default class touch_move extends cc.Component {
         type: cc.Prefab
     })
     popup_win: cc.Prefab = null;
-    // @property({
-    //     type: crate
-    // })
-    // crate: crate = null;
 
     stepMove = 64;
     accMove = cc.v2(0,0);
-
-    ismove_top = false;
-    ismove_bottom = false;
-    ismove_left = false;
-    ismove_right = false;
 
     isCrate = false;
     keyCrate = '';
@@ -52,18 +43,18 @@ export default class touch_move extends cc.Component {
     crateMax = 0;
     crateCr = 0;
 
-    protected onLoad(): void {
-        // this.node.getComponent(player).touch_move = this;
-    }
+    moveArr = [];
 
 
     protected start(): void {
         this.crateLenght = this.crate_mng.children.length;
         this.crateMax = this.crateLenght;
+
         this.node.on('touchmove', (move) =>{
             let delta = move.getDelta();
-            this.accMove = delta;
-            // cc.log('start pos: ', delta.x, delta.y);
+            // this.accMove = delta;
+            this.moveArr.push(delta);
+            cc.log('start pos: ', delta.x, delta.y);
 
             if(this.accMove.y > 0){
                 this.player_class.nameCrate = this.player_class.top.getComponent(direction_player).nameCrate;
@@ -76,29 +67,24 @@ export default class touch_move extends cc.Component {
             }
 
             for (const key in this.crate_mng.children) {
-                // cc.log(key);
-                // cc.log(this.player_class.nameCrate );
                 if (this.player_class.nameCrate == this.crate_mng.children[key].name){
-                    // this.crate_mng.children[key].getComponent(crate).isAction = true;
                     this.keyCrate = key;
                     this.isCrate = true;
                     break;
-                    // cc.log(' ',this.crate_mng.children[key].name);
-                    // cc.log('21', this.player_class.nameCrate)
                 }
-                // 
-                    // this.crate_mng.children[key].getComponent(crate).isAction = false;
-                    this.isCrate = false;
-                    // this.ismove_top = true;
-                    // this.ismove_bottom = true;
-                    // this.ismove_left = true;
-                    // this.ismove_right = true;
-                    // cc.log('ko dung');
+                this.isCrate = false;
             }
 
         }, this)
+
         this.node.on('touchend', (e) => {
-            let delta = e.getDelta();
+            cc.log(this.moveArr);
+            // cc.log('max x: ',Math.max(...this.moveArrX));
+            // cc.log('y: ', this.moveArrY);
+            // cc.log('max y: ',Math.max(...this.moveArrY));
+
+            this.accMove = this.moveArr[Math.floor((this.moveArr.length-1)/2)];
+            this.moveArr.splice(0,this.moveArr.length-1);
 
             if (Math.abs(this.accMove.x) > Math.abs(this.accMove.y)){
                 this.accMove.y = 0;
@@ -106,14 +92,8 @@ export default class touch_move extends cc.Component {
             else {
                 this.accMove.x = 0;
             }
-            // cc.log('end pos: ',delta.x, delta.y);
-            // cc.log(this.player.x)
-            // cc.log(this.ismove_bottom);
-            // cc.log(this.ismove_top);
-            // cc.log(this.ismove_left);
-            // cc.log(this.ismove_right);
-            // cc.log(this.crate_mng.children);
-           
+            cc.log(this.accMove.x, this.accMove.y);
+        
             if (this.isCrate){
                 if(this.accMove.x < 0 && this.player_class.ismove_left &&
                     this.crate_mng.children[this.keyCrate].getComponent(crate).ismove_left){
