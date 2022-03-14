@@ -45,6 +45,15 @@ export default class direction_player extends cc.Component {
         }
     }
 
+    onCollisionStay(other, self){
+        if (other.tag == 2){
+            this.nameCrate = other.node.name;
+            this.nameDir = self.node.name;
+            this.tag = 2;
+
+        }
+    }
+
     onCollisionExit(other, self){
         if (other.node.name == 'block'){
             if (self.node.name == 'top'){

@@ -44,41 +44,53 @@ export default class touch_move extends cc.Component {
     crateCr = 0;
 
     moveArr = [];
+    accMove1 = cc.v2(0,0);;
+    nameCrateCol = [];
+
+    isMoveTop = true;
+    isMoveBottom = true;
+    isMoveLeft = true;
+    isMoveRight = true; 
+
+    crateCol = null;
+
+    protected onLoad(): void {
+        for (const key in this.crate_mng.children) {
+            this.crate_mng.children[key].getComponent(crate).init(this);
+        }
+    }
 
 
     protected start(): void {
+        // cc.log('start ',this.nameCrateCol.length);
         this.crateLenght = this.crate_mng.children.length;
         this.crateMax = this.crateLenght;
 
+        this.node.on('touchstart', (star) =>{
+            this.accMove = cc.v2(0,0);
+        }, this)
+
         this.node.on('touchmove', (move) =>{
             let delta = move.getDelta();
-            // this.accMove = delta;
+            // // this.accMove = delta;
             this.moveArr.push(delta);
-            cc.log('start pos: ', delta.x, delta.y);
+            // cc.log('start pos: ', delta.x, delta.y);
 
-            if(this.accMove.y > 0){
-                this.player_class.nameCrate = this.player_class.top.getComponent(direction_player).nameCrate;
-            } else if(this.accMove.y < 0){
-                this.player_class.nameCrate = this.player_class.bottom.getComponent(direction_player).nameCrate;
-            } else if(this.accMove.x > 0){
-                this.player_class.nameCrate = this.player_class.right.getComponent(direction_player).nameCrate;
-            } else if(this.accMove.x < 0){
-                this.player_class.nameCrate = this.player_class.left.getComponent(direction_player).nameCrate;
-            }
+            this.accMove1 = delta;
+            // this.moveArr.splice(0,this.moveArr.length-1);
+            // if (Math.abs(this.accMove.x) > Math.abs(this.accMove.y)){
+            //     this.accMove.y = 0;
+            // }
+            // else {
+            //     this.accMove.x = 0;
+            // }
 
-            for (const key in this.crate_mng.children) {
-                if (this.player_class.nameCrate == this.crate_mng.children[key].name){
-                    this.keyCrate = key;
-                    this.isCrate = true;
-                    break;
-                }
-                this.isCrate = false;
-            }
+           
 
         }, this)
 
         this.node.on('touchend', (e) => {
-            cc.log(this.moveArr);
+            // cc.log(this.moveArr);
             // cc.log('max x: ',Math.max(...this.moveArrX));
             // cc.log('y: ', this.moveArrY);
             // cc.log('max y: ',Math.max(...this.moveArrY));
@@ -92,31 +104,62 @@ export default class touch_move extends cc.Component {
             else {
                 this.accMove.x = 0;
             }
-            cc.log(this.accMove.x, this.accMove.y);
+            // for (const key in this.nameCrateCol) {
+                // cc.log(this.nameCrateCol);
+            // }
+            
+             cc.log(this.accMove.x, this.accMove.y);
+
+            if(this.accMove.y > 0){
+                this.player_class.nameCrate = this.player_class.top.getComponent(direction_player).nameCrate;
+            } else if(this.accMove.y < 0){
+                this.player_class.nameCrate = this.player_class.bottom.getComponent(direction_player).nameCrate;
+            } else if(this.accMove.x > 0){
+                this.player_class.nameCrate = this.player_class.right.getComponent(direction_player).nameCrate;
+            } else if(this.accMove.x < 0){
+                this.player_class.nameCrate = this.player_class.left.getComponent(direction_player).nameCrate;
+            }
+
+            for (const key in this.crate_mng.children) {
+                cc.log(this.player_class.nameCrate);
+                if (this.player_class.nameCrate == this.crate_mng.children[key].name){
+                    this.keyCrate = key;
+                    this.isCrate = true;
+                    break;
+                }
+                else {
+                    this.isCrate = false;
+                }
+                
+            }
+
+            this.crateCol = this.crate_mng.children[this.keyCrate].getComponent(crate);
         
             if (this.isCrate){
+                cc.log(true);
                 if(this.accMove.x < 0 && this.player_class.ismove_left &&
-                    this.crate_mng.children[this.keyCrate].getComponent(crate).ismove_left){
+                    this.crateCol.ismove_left){
                     this.player.x -= this.stepMove;
                 } else if(this.accMove.x > 0 && this.player_class.ismove_right &&
-                    this.crate_mng.children[this.keyCrate].getComponent(crate).ismove_right){
+                    this.crateCol.ismove_right){
                     this.player.x += this.stepMove;
                 } else if(this.accMove.y < 0 && this.player_class.ismove_bottom &&
-                    this.crate_mng.children[this.keyCrate].getComponent(crate).ismove_bottom){
+                    this.crateCol.ismove_bottom){
                     this.player.y -= this.stepMove;
                 } else if(this.accMove.y > 0 && this.player_class.ismove_top &&
-                    this.crate_mng.children[this.keyCrate].getComponent(crate).ismove_top){
+                    this.crateCol.ismove_top){
                     this.player.y += this.stepMove
                 }
             }
             else {
-                if(this.accMove.x < 0 && this.player_class.ismove_left){
+                cc.log(false);
+                if(this.accMove.x < 0 && this.player_class.ismove_left && this.isMoveLeft){
                     this.player.x -= this.stepMove;
-                } else if(this.accMove.x > 0 && this.player_class.ismove_right){
+                } else if(this.accMove.x > 0 && this.player_class.ismove_right && this.isMoveRight){
                     this.player.x += this.stepMove;
-                } else if(this.accMove.y < 0 && this.player_class.ismove_bottom){
+                } else if(this.accMove.y < 0 && this.player_class.ismove_bottom && this.isMoveBottom){
                     this.player.y -= this.stepMove;
-                } else if(this.accMove.y > 0 && this.player_class.ismove_top){
+                } else if(this.accMove.y > 0 && this.player_class.ismove_top && this.isMoveTop){
                     this.player.y += this.stepMove
                 }
             }

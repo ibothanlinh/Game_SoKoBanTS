@@ -43,6 +43,7 @@ export default class player extends cc.Component {
     }
 
     protected update(dt: number): void {
+        // cc.log(dt);
         if (this.top.getComponent(direction_player).isTop_block){
             this.ismove_top = false;
         }else{
