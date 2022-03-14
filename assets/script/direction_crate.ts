@@ -37,6 +37,27 @@ export default class direction_crate extends cc.Component {
         }
     }
 
+    onCollisionStay(other, self){
+        if (other.node.name == 'block'|| other.tag == 2){
+            if (self.node.name == 'top'){
+                this.isTop_block = true;
+                //  cc.log('on top');
+            }
+            if (self.node.name == 'bottom'){
+                this.isBottom_block = true;
+                //  cc.log('on bottom');
+            }
+            if (self.node.name == 'right'){
+                this.isRight_block = true;
+                //  cc.log('on right');
+            }
+            if (self.node.name == 'left'){
+                this.isLeft_block = true;
+                //  cc.log('on left');
+            }
+        }
+    }
+
     onCollisionExit(other, self){
         if (other.node.name == 'block' || other.tag == 2){
             if (self.node.name == 'top'){

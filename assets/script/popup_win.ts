@@ -9,6 +9,9 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class NewClass extends cc.Component {
+   
+
+
     onButtonRestart(){
         cc.director.loadScene('game');
     }

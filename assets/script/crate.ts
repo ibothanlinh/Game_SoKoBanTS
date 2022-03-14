@@ -15,6 +15,10 @@ export default class crate extends cc.Component {
         type: touch_move
     })
     touch_move: touch_move;
+    @property({
+        type: cc.AudioClip
+    })
+    audioCollet = null;
 
     stepMove = 64;
 
@@ -70,6 +74,7 @@ export default class crate extends cc.Component {
         
         if (other.tag == 4){
             this.node.color = cc.Color.RED;
+            cc.audioEngine.play(this.audioCollet,false,0.5);
             this.touch_move.crateCr++;
         }
        }

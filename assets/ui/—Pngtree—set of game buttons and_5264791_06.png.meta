@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "bb12d26d-25a5-4d4b-99d2-9d3c7f74141a",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1501,
+  "height": 506,
+  "platformSettings": {},
+  "subMetas": {
+    "—Pngtree—set of game buttons and_5264791_06": {
+      "ver": "1.0.6",
+      "uuid": "c2ca51b3-e2e4-46a5-bdc8-c3b40405364f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "bb12d26d-25a5-4d4b-99d2-9d3c7f74141a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1501,
+      "height": 506,
+      "rawWidth": 1501,
+      "rawHeight": 506,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
