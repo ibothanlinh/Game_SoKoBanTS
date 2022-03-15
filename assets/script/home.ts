@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 const {ccclass, property} = cc._decorator;
+import touch_move from "./touch-move";
 
 @ccclass
 export default class NewClass extends cc.Component {
@@ -17,16 +18,33 @@ export default class NewClass extends cc.Component {
         type: cc.Node
     })
     tutorialButton: cc.Node = null;
+    @property({
+        type: cc.Prefab
+    })
+    tutorialPrefab: cc.Prefab = null;
+    @property({
+        type: cc.AudioClip
+    })
+    audioClick = null;
 
     play = null;
     tutorial = null;
+
+    // onSceneLaunched = 0;
 
 
     rotation = 3;
     actionRotationPlay = null;
     actionRotationTutorial = null;
+    actionScalePlay = null;
+    actionScaleTutorial = null;
+    sceneArr = [];
+    // global;
+
 
     protected start(): void {
+        // cc.log('global: ',window.globalThis.Array);
+        // this.sceneArr.push(this.node.parent);
         this.actionRotationPlay = cc.repeatForever(
             cc.sequence(
                 cc.rotateBy(0.5,this.rotation),
@@ -49,11 +67,25 @@ export default class NewClass extends cc.Component {
 
     }
 
+
    onButtonPlay(){
+       this.actionScalePlay = cc.sequence(
+           cc.scaleTo(0.1,1.2),
+           cc.scaleTo(0.1,0.9)
+       );
+       this.playButton.runAction(this.actionScalePlay);
+       cc.audioEngine.playEffect(this.audioClick,false);
         cc.director.loadScene('game');
    }
    onButtonTutorial(){
-        cc.director.loadScene('tutorial');
+    this.actionScaleTutorial = cc.sequence(
+        cc.scaleTo(0.1,1.2),
+        cc.scaleTo(0.1,0.9)
+    );
+    this.tutorialButton.runAction(this.actionScaleTutorial);
+    cc.audioEngine.playEffect(this.audioClick,false);
+        let tuto = cc.instantiate(this.tutorialPrefab);
+        this.node.addChild(tuto);
    }
 
    protected update(dt: number): void {

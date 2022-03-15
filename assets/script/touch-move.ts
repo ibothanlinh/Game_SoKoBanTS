@@ -38,9 +38,9 @@ export default class touch_move extends cc.Component {
     })
     audioRun= null;
     @property({
-        type: cc.AudioClip
+        type: cc.Node
     })
-    audioWin= null;
+    layoutEndGame: cc.Node = null;
 
     stepMove = 64;
     accMove = cc.v2(0,0);
@@ -64,15 +64,19 @@ export default class touch_move extends cc.Component {
     volume = 0.5;
     isWin = true;
 
+    actionRotationWin = null;
+    actionScalePopup = null;
+
     protected onLoad(): void {
         for (const key in this.crate_mng.children) {
             this.crate_mng.children[key].getComponent(crate).init(this);
         }
     }
 
-
     protected start(): void {
         // cc.log('start ',this.nameCrateCol.length);
+        // cc.log('scene: ',this.node.parent.name);
+        this.layoutEndGame.active = false;
         this.crateLenght = this.crate_mng.children.length;
         this.crateMax = this.crateLenght;
 
@@ -192,16 +196,20 @@ export default class touch_move extends cc.Component {
     update (dt) {
         this.Score.getChildByName("score_cr").getComponent(cc.Label).string = `${this.crateMax}/${this.crateCr}`;
         if(this.crateMax == this.crateCr){         
-            this.winSound();
-            let popup = cc.instantiate(this.popup_win);
-            this.node.addChild(popup);
+            this.win();           
         }
     }
 
-    winSound(){
+    win(){
         if (this.isWin){
+            this.node.off('touchend');
+            this.node.off('touchmove');
+            // this.node.off('touchend');
+            this.layoutEndGame.active = true;
+            this.node.getChildByName('header').active = false;
             this.node.getComponent(cc.AudioSource).pause();
-            cc.audioEngine.playEffect(this.audioWin, false);
+            let popup = cc.instantiate(this.popup_win);
+            this.node.addChild(popup);
             this.isWin = false;
         }
     }
