@@ -1,7 +1,7 @@
 {
-  "title": "sokoban_v1_4",
+  "title": "sokoban_v1_6",
   "packageName": "org.cocos2d.demo",
-  "startScene": "485cde66-0661-454b-a76d-c2469aeddfef",
+  "startScene": "211ffc21-5afa-48f0-abd9-7febdf980e8e",
   "excludeScenes": [],
   "orientation": {
     "landscapeRight": true,

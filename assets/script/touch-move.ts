@@ -181,16 +181,16 @@ export default class touch_move extends cc.Component {
             }
             else {
                 cc.log(false);
-                if(this.accMove.x < 0 && this.player_class.ismove_left && this.isMoveLeft){
+                if(this.accMove.x < 0 && this.player_class.ismove_left){
                     this.player.x -= this.stepMove;
                     cc.audioEngine.play(this.audioRun, false, this.volume);
-                } else if(this.accMove.x > 0 && this.player_class.ismove_right && this.isMoveRight){
+                } else if(this.accMove.x > 0 && this.player_class.ismove_right){
                     this.player.x += this.stepMove;
                     cc.audioEngine.play(this.audioRun, false, this.volume);
-                } else if(this.accMove.y < 0 && this.player_class.ismove_bottom && this.isMoveBottom){
+                } else if(this.accMove.y < 0 && this.player_class.ismove_bottom){
                     this.player.y -= this.stepMove;
                     cc.audioEngine.play(this.audioRun, false, this.volume);
-                } else if(this.accMove.y > 0 && this.player_class.ismove_top && this.isMoveTop){
+                } else if(this.accMove.y > 0 && this.player_class.ismove_top){
                     this.player.y += this.stepMove
                     cc.audioEngine.play(this.audioRun, false, this.volume);
                 }

@@ -3196,7 +3196,9 @@
     "Score": {
       "__id__": 96
     },
-    "popup_win": null,
+    "popup_win": {
+      "__uuid__": "be1f6cc7-00e2-46bd-928a-297a3e09da33"
+    },
     "audioRun": {
       "__uuid__": "fdd75680-10c1-4f8a-8a65-190ef6c29f27"
     },
@@ -6199,7 +6201,9 @@
     "touch_move": {
       "__id__": 79
     },
-    "audioCollet": null,
+    "audioCollet": {
+      "__uuid__": "b5fdd943-09bc-4641-89e0-489a9a640bea"
+    },
     "_id": "79STR/XbVKk5ydPF0vZESs"
   },
   {
