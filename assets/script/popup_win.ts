@@ -31,6 +31,7 @@ export default class NewClass extends cc.Component {
 
     actionScaleRestart = null;
     actionScaleNext = null;
+    // nameScene = this.node.parent.parent.name;
 
     protected start(): void {
         // this.node.setScale(0.1);
@@ -63,7 +64,10 @@ export default class NewClass extends cc.Component {
         );
         this.nextButton.runAction(this.actionScaleNext);
         cc.audioEngine.playEffect(this.audioClick,false);
-        cc.director.loadScene('game');
+        let nameScene = this.node.parent.parent.name;
+        let nameLV = nameScene.replace('gameLV','');
+        let nextLV = Number.parseInt(nameLV) + 1;
+        cc.director.loadScene('gameLV'+ nextLV.toString());
     }
 
     // update (dt) {}

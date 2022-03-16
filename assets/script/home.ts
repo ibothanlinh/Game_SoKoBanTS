@@ -75,7 +75,7 @@ export default class NewClass extends cc.Component {
        );
        this.playButton.runAction(this.actionScalePlay);
        cc.audioEngine.playEffect(this.audioClick,false);
-        cc.director.loadScene('game');
+        cc.director.loadScene('gameLV1');
    }
    onButtonTutorial(){
     this.actionScaleTutorial = cc.sequence(

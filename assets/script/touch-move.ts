@@ -74,6 +74,12 @@ export default class touch_move extends cc.Component {
     }
 
     protected start(): void {
+        // let nameScene = this.node.parent.name;
+        // cc.log('name scene: ', nameScene);
+        // let lv = nameScene.replace('gameLV','');
+        // cc.log('name lv: ', lv);
+        // let netLV = Number.parseInt(lv) + 1;
+        // cc.log('next lv: ', netLV.toString());
         // cc.log('start ',this.nameCrateCol.length);
         // cc.log('scene: ',this.node.parent.name);
         this.layoutEndGame.active = false;

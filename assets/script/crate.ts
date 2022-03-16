@@ -14,7 +14,7 @@ export default class crate extends cc.Component {
     @property({
         type: touch_move
     })
-    touch_move: touch_move;
+    touch_move: touch_move = null;
     @property({
         type: cc.AudioClip
     })

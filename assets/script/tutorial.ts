@@ -42,7 +42,7 @@ export default class NewClass extends cc.Component {
         );
         cc.audioEngine.playEffect(this.audioClick,false);
         this.playButton.runAction(this.actionScalePlay);
-        cc.director.loadScene('game');
+        cc.director.loadScene('gameLV1');
     }
 
     // update (dt) {}
