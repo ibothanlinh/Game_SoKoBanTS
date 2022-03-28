@@ -1854,8 +1854,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
-      "height": 64
+      "width": 20,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1907,7 +1907,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "7266dbf3-1a54-49da-92b9-a22a4c339428"
+      "__uuid__": "bceb9487-01b5-4e41-9323-041e5f8a529b"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -1972,8 +1972,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
-      "height": 64
+      "width": 20,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2025,7 +2025,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "7266dbf3-1a54-49da-92b9-a22a4c339428"
+      "__uuid__": "bceb9487-01b5-4e41-9323-041e5f8a529b"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -2090,8 +2090,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
-      "height": 64
+      "width": 20,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2143,7 +2143,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "7266dbf3-1a54-49da-92b9-a22a4c339428"
+      "__uuid__": "bceb9487-01b5-4e41-9323-041e5f8a529b"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -2208,8 +2208,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
-      "height": 64
+      "width": 20,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2261,7 +2261,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "7266dbf3-1a54-49da-92b9-a22a4c339428"
+      "__uuid__": "bceb9487-01b5-4e41-9323-041e5f8a529b"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -2326,8 +2326,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
-      "height": 64
+      "width": 20,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2379,7 +2379,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "7266dbf3-1a54-49da-92b9-a22a4c339428"
+      "__uuid__": "bceb9487-01b5-4e41-9323-041e5f8a529b"
     },
     "_type": 0,
     "_sizeMode": 1,

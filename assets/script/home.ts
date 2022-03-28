@@ -65,6 +65,18 @@ export default class NewClass extends cc.Component {
         this.play = this.playButton.getChildByName('Background');
         this.tutorial = this.tutorialButton.getChildByName('Background');
 
+        cc.resources.load('levelConfig', cc.JsonAsset, (err, asset: cc.JsonAsset)=>{
+            if(err){
+                cc.log(err)
+                return;
+            }
+
+            cc.log('total level ',Object.keys(asset.json.level).length)
+            cc.log(' level 1 ',asset.json.level['1'])
+            cc.log(asset.json)
+            cc.log(asset.json)
+            cc.log(asset.json)
+        })
     }
 
 
@@ -75,7 +87,7 @@ export default class NewClass extends cc.Component {
        );
        this.playButton.runAction(this.actionScalePlay);
        cc.audioEngine.playEffect(this.audioClick,false);
-        cc.director.loadScene('gameLV1');
+        cc.director.loadScene('game');
    }
    onButtonTutorial(){
     this.actionScaleTutorial = cc.sequence(
